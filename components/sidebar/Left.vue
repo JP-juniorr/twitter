@@ -1,8 +1,12 @@
 <script setup></script>
 
 <template>
-  <div class="w-8 h-8">
-    <LogoTwitter />
+  <div>
+    <NuxtLink to="/">
+      <div class="w-8 h-8">
+        <LogoTwitter />
+      </div>
+    </NuxtLink>
   </div>
 </template>
 
