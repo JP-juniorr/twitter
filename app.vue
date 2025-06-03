@@ -2,7 +2,7 @@
 import { ref, watch } from "vue";
 import SidebarLeft from "./components/sidebar/Left.vue";
 import Middle from "./components/Middle.vue";
-const isActive = ref(true);
+const isActive = ref(false);
 </script>
 
 <template>
@@ -37,20 +37,21 @@ const isActive = ref(true);
   height: 100vh;
   position: sticky; /* Make the left section sticky */
   top: 0; /* Stick to the top */
-  border: 1px solid black;
+  border-right: 1px solid vars.$dim_border;
+  padding: 20px 50px;
 }
 
 .middle {
   width: 50%;
   height: 100vh;
   overflow-y: auto; /* Enable scrolling for the middle section */
-  border: 1px solid black;
+  border-right: 1px solid vars.$dim_border;
 }
 
 .right {
   width: 30%;
   height: 100vh;
   overflow-y: auto; /* Enable scrolling for the middle section */
-  border: 1px solid black;
+  border-left: 1px solid vars.$dim_border;
 }
 </style>
