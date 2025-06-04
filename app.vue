@@ -9,7 +9,7 @@ const isActive = ref(false);
   <div :class="{ active: isActive }">
     <div class="main">
       <div class="left"><SidebarLeft /></div>
-      <div class="middle"><Middle /></div>
+      <div class="middle"><NuxtPage /></div>
       <div class="right"><Right /></div>
     </div>
   </div>
@@ -34,11 +34,12 @@ const isActive = ref(false);
 
 .left {
   width: 20%;
-  height: 100vh;
-  position: sticky; /* Make the left section sticky */
-  top: 0; /* Stick to the top */
+  height: 100vh; /* Full viewport height */
+  position: sticky; /* Makes the element stick to the top */
+  top: 0; /* Stick to the top of the viewport */
   border-right: 1px solid vars.$dim_border;
   padding: 20px 50px;
+  overflow: hidden; /* Prevent scrolling */
 }
 
 .middle {

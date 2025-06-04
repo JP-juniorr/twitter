@@ -11,43 +11,58 @@
   <div>
     <ul>
       <li>
-        <Icon name="dashicons:admin-home" class="blue" /><span>Home</span>
+        <NuxtLink to="/home"
+          ><Icon name="dashicons:admin-home" class="blue" /> Home</NuxtLink
+        >
       </li>
       <li>
-        <Icon name="tabler:hash" class="blue" />
-        Explore
+        <NuxtLink to="/explore"
+          ><Icon name="tabler:hash" class="blue" /> Explore</NuxtLink
+        >
       </li>
       <li>
-        <Icon name="tabler:bell" class="blue" />
-        Notifications
+        <NuxtLink to="/notification"
+          ><Icon name="tabler:bell" class="blue" /> Notifications</NuxtLink
+        >
       </li>
       <li>
-        <Icon name="tabler:mail" class="blue" />
-        Messages
+        <NuxtLink to="/messages"
+          ><Icon name="tabler:mail" class="blue" /> Messages</NuxtLink
+        >
       </li>
       <li>
-        <Icon name="tabler:bookmark" class="blue" />
-        Bookmarks
+        <NuxtLink to="/bookmark"
+          ><Icon name="tabler:bookmark" class="blue" /> Bookmark</NuxtLink
+        >
       </li>
       <li>
-        <Icon name="tabler:clipboard-list" class="blue" />
-        Lists
+        <NuxtLink to="/lists"
+          ><Icon name="tabler:list" class="blue" /> Lists</NuxtLink
+        >
       </li>
       <li>
-        <Icon name="tabler:user" class="blue" />
-        Profile
+        <NuxtLink to="/profile"
+          ><Icon name="tabler:user" class="blue" /> Profile</NuxtLink
+        >
       </li>
       <li>
-        <Icon name="tabler:device-airpods-case" class="blue" />
-        Jobs
+        <NuxtLink to="/jobs">
+          <Icon name="tabler:device-airpods-case" class="blue" />
+          Jobs
+        </NuxtLink>
       </li>
       <li>
-        <Icon name="tabler:users" class="blue" />
-        Communities
+        <NuxtLink to="/communities"
+          ><Icon name="tabler:users" class="blue" /> Communities</NuxtLink
+        >
       </li>
       <li>
-        <Icon name="tabler:dots-circle-horizontal" class="blue" />
-        More
+        <NuxtLink to="/more">
+          <Icon
+            name="tabler:dots-circle-horizontal"
+            class="blue"
+          />More</NuxtLink
+        >
       </li>
       <li>
         <button>Tweet</button>
@@ -83,13 +98,20 @@ ul {
   margin: 0;
 }
 li {
-  margin: 15px 0;
+  margin: 10px 0;
   padding: 10px 0;
-  display: flex;
-  align-items: center;
+  display: flex; /* Align icon and text horizontally */
+  justify-content: flex-start;
+  height: 100%;
+  align-items: center; /* Center items vertically */
   cursor: pointer;
   transition: background-color 0.3s;
   font-weight: bold;
+}
+a {
+  display: flex; /* Align icon and text horizontally */
+  align-items: center; /* Center items vertically */
+  font-size: 18px;
 }
 h1 {
   font-family: "MyFontHeavy", sans-serif !important;
@@ -97,8 +119,9 @@ h1 {
 .blue {
   color: vars.$dim_icons;
   font-size: 1.5rem;
-  margin-right: 5px;
+  margin-right: 10px; /* Space between icon and text */
 }
+
 button {
   background-color: vars.$dim_50;
   color: white;
@@ -140,14 +163,12 @@ button {
 .profile-name {
   font-family: "MyFontHeavy", sans-serif;
   font-size: 1rem;
-
   margin: 0;
 }
 
 .profile-username {
   font-family: "MyFontRegular", sans-serif;
   font-size: 0.875rem;
-
   margin: 0;
 }
 
