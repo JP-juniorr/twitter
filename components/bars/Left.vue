@@ -1,9 +1,11 @@
 <script setup>
 import { useSidebarLinks } from "@/composables/useSidebarLinks";
 import { useRoute } from "vue-router";
+import Button from "../reusable/button.vue";
 const route = useRoute(); // reactive current route
 const links = useSidebarLinks();
 const activePage = ref(""); // Track the active page
+
 function setActivePage(page) {
   activePage.value = page;
 }
@@ -34,9 +36,7 @@ function setActivePage(page) {
       </NuxtLink>
     </li>
 
-    <li>
-      <button>Tweet</button>
-    </li>
+    <li><Button>Tweet</Button></li>
 
     <li class="special">
       <div class="profile">
@@ -90,19 +90,6 @@ a {
   font-size: 1.5rem;
   margin-right: 10px;
   position: relative; /* Required for the dot */
-}
-
-button {
-  background-color: vars.$dim_50;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 9999px;
-  width: 100%;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .profile {

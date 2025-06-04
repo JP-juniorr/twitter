@@ -1,7 +1,8 @@
 <script setup>
 import { ref, watch } from "vue";
-import SidebarLeft from "./components/sidebar/Left.vue";
-import Middle from "./components/Middle.vue";
+import SidebarLeft from "./components/bars/Left.vue";
+import Middle from "./components/bars/Middle.vue";
+import Right from "./components/bars/Right.vue";
 const isActive = ref(false);
 </script>
 
