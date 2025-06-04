@@ -1,125 +1,95 @@
-<script setup></script>
+<script setup>
+import { useSidebarLinks } from "@/composables/useSidebarLinks";
+import { useRoute } from "vue-router";
+const route = useRoute(); // reactive current route
+const links = useSidebarLinks();
+const activePage = ref(""); // Track the active page
+function setActivePage(page) {
+  activePage.value = page;
+}
+</script>
 
 <template>
   <div class="logo">
-    <NuxtLink to="/">
+    <NuxtLink to="/" @click="setActivePage('/')">
       <div class="w-8 h-8">
         <LogoTwitter />
       </div>
     </NuxtLink>
   </div>
-  <div>
-    <ul>
-      <li>
-        <NuxtLink to="/home"
-          ><Icon name="dashicons:admin-home" class="blue" /> Home</NuxtLink
-        >
-      </li>
-      <li>
-        <NuxtLink to="/explore"
-          ><Icon name="tabler:hash" class="blue" /> Explore</NuxtLink
-        >
-      </li>
-      <li>
-        <NuxtLink to="/notification"
-          ><Icon name="tabler:bell" class="blue" /> Notifications</NuxtLink
-        >
-      </li>
-      <li>
-        <NuxtLink to="/messages"
-          ><Icon name="tabler:mail" class="blue" /> Messages</NuxtLink
-        >
-      </li>
-      <li>
-        <NuxtLink to="/bookmark"
-          ><Icon name="tabler:bookmark" class="blue" /> Bookmark</NuxtLink
-        >
-      </li>
-      <li>
-        <NuxtLink to="/lists"
-          ><Icon name="tabler:list" class="blue" /> Lists</NuxtLink
-        >
-      </li>
-      <li>
-        <NuxtLink to="/profile"
-          ><Icon name="tabler:user" class="blue" /> Profile</NuxtLink
-        >
-      </li>
-      <li>
-        <NuxtLink to="/jobs">
-          <Icon name="tabler:device-airpods-case" class="blue" />
-          Jobs
-        </NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/communities"
-          ><Icon name="tabler:users" class="blue" /> Communities</NuxtLink
-        >
-      </li>
-      <li>
-        <NuxtLink to="/more">
-          <Icon
-            name="tabler:dots-circle-horizontal"
-            class="blue"
-          />More</NuxtLink
-        >
-      </li>
-      <li>
-        <button>Tweet</button>
-      </li>
-      <li class="special">
-        <div class="profile">
-          <div class="profile-left">
-            <img
-              src="../../assets/images/human.png"
-              alt="Profile Picture"
-              class="profile-image"
-            />
-          </div>
-          <div class="profile-middle">
-            <h3 class="profile-name">JP Junior</h3>
-            <p class="profile-username">@iamjpjunior</p>
-          </div>
-          <div class="profile-right">
-            <Icon name="tabler:dots" class="profile-options" />
-          </div>
+
+  <ul>
+    <li v-for="link in links" :key="link.to">
+      <NuxtLink :to="link.to" class="nav-link">
+        <div class="icon-wrapper">
+          <Icon :name="link.icon" class="blue" />
+          <span v-if="route.path === link.to" class="dot" />
         </div>
-      </li>
-    </ul>
-  </div>
+        <span
+          class="label"
+          :class="{ 'label--active': route.path === link.to }"
+        >
+          {{ link.label }}
+        </span>
+      </NuxtLink>
+    </li>
+
+    <li>
+      <button>Tweet</button>
+    </li>
+
+    <li class="special">
+      <div class="profile">
+        <div class="profile-left">
+          <img
+            src="../../assets/images/human.png"
+            alt="Profile Picture"
+            class="profile-image"
+          />
+        </div>
+        <div class="profile-middle">
+          <h3 class="profile-name">JP Junior</h3>
+          <p class="profile-username">@iamjpjunior</p>
+        </div>
+        <div class="profile-right">
+          <Icon name="tabler:dots" class="profile-options" />
+        </div>
+      </div>
+    </li>
+  </ul>
 </template>
 
 <style scoped lang="scss">
 @use "@/assets/styles/variables.scss" as vars;
 @use "@/assets/styles/fonts.scss";
+
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 li {
-  margin: 10px 0;
+  margin: 8px 0;
   padding: 10px 0;
-  display: flex; /* Align icon and text horizontally */
-  justify-content: flex-start;
-  height: 100%;
-  align-items: center; /* Center items vertically */
+  display: flex;
+  align-items: center;
   cursor: pointer;
+
   transition: background-color 0.3s;
-  font-weight: bold;
 }
+
 a {
-  display: flex; /* Align icon and text horizontally */
-  align-items: center; /* Center items vertically */
+  display: flex;
+  align-items: center;
   font-size: 18px;
 }
-h1 {
-  font-family: "MyFontHeavy", sans-serif !important;
-}
+
 .blue {
   color: vars.$dim_icons;
   font-size: 1.5rem;
-  margin-right: 10px; /* Space between icon and text */
+  margin-right: 10px;
+  position: relative; /* Required for the dot */
 }
 
 button {
@@ -134,13 +104,11 @@ button {
   font-size: 1rem;
   transition: background-color 0.3s, color 0.3s;
 }
-.lgoo {
-  display: inline-block;
-}
+
 .profile {
   display: flex;
   align-items: center;
-  padding: 10px 0px;
+  padding: 10px 0;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -156,6 +124,7 @@ button {
   border-radius: 50%;
   object-fit: cover;
 }
+
 .profile-middle {
   flex: 1;
 }
@@ -185,8 +154,46 @@ button {
   right: 10%;
   cursor: pointer;
 }
+
 .special {
   width: 127%;
   position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  font-weight: normal; // default
+  transition: font-weight 0.2s ease;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+
+.icon-wrapper {
+  position: relative;
+  margin-right: 10px;
+}
+
+.label {
+  font-weight: normal;
+  transition: font-weight 0.2s ease;
+}
+
+.label--active {
+  font-weight: bold;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: vars.$dim_50;
+  border-radius: 50%;
+  position: absolute;
+  top: 0px;
+  left: 80%;
+  transform: translateX(-50%);
+  border: 1px solid black;
 }
 </style>
