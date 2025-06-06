@@ -36,7 +36,11 @@ function setActivePage(page) {
       </NuxtLink>
     </li>
 
-    <li><Button>Tweet</Button></li>
+    <li>
+      <Button class="button-card">
+        <template #tweet> Tweet </template>
+      </Button>
+    </li>
 
     <li class="special">
       <div class="profile">

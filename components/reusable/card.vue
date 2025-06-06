@@ -1,19 +1,20 @@
 <script setup>
 import Button from "./button.vue";
+const slots = useSlots();
 </script>
 
 <template>
   <div class="card">
-    <div class="card-title">
+    <div v-if="slots.title" class="card-title">
       <slot name="title">Default Title</slot>
     </div>
-    <div class="card-content">
+    <div v-if="slots.content" class="card-content">
       <slot name="content">Default Content</slot>
     </div>
-    <div class="card-footer">
-      <slot name="footer">
-        <Button class="button-card">Default Button</Button>
-      </slot>
+    <div v-if="slots.button" class="card-footer">
+      <Button>
+        <template #subscribe> Subscribe </template>
+      </Button>
     </div>
   </div>
 </template>
