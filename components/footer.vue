@@ -1,25 +1,19 @@
+<script setup>
+import { useFooterLinks } from "@/composables/useFooterLinks";
+
+const footerLinks = useFooterLinks();
+</script>
+
 <template>
   <footer class="footer">
     <ul class="footer-links">
-      <li v-for="(link, index) in links" :key="index">
-        <NuxtLink :to="link.to">{{ link.label }}</NuxtLink>
-        <span v-if="index !== links.length - 1">|</span>
+      <li v-for="link in footerLinks" :key="link.id">
+        <a :href="link.url">{{ link.label }}</a>
       </li>
     </ul>
     <p class="copyright">© 2025 Twitter</p>
   </footer>
 </template>
-
-<script setup>
-const links = [
-  { label: "Terms of Service", to: "/terms" },
-  { label: "Privacy Policy", to: "/privacy" },
-  { label: "Cookie Policy", to: "/cookies" },
-  { label: "MStV Transparenzangaben", to: "/mstv" },
-  { label: "Imprint", to: "/imprint" },
-  { label: "More", to: "/more" },
-];
-</script>
 
 <style scoped lang="scss">
 .footer {

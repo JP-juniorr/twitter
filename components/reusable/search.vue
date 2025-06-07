@@ -6,9 +6,9 @@
 </template>
 
 <style scoped lang="scss">
+@use "@/assets/styles/mixins.scss" as *;
 .search-container {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   background-color: #eff3f4;
   border-radius: 9999px; // full pill shape
   padding: 8px 12px;

@@ -5,7 +5,7 @@ import Button from "../reusable/button.vue";
 const route = useRoute(); // reactive current route
 const links = useSidebarLinks();
 const activePage = ref(""); // Track the active page
-
+import follow from "../reusable/Follow.vue";
 function setActivePage(page) {
   activePage.value = page;
 }
@@ -66,47 +66,51 @@ function setActivePage(page) {
 <style scoped lang="scss">
 @use "@/assets/styles/variables.scss" as vars;
 @use "@/assets/styles/fonts.scss";
+@use "@/assets/styles/mixins.scss" as *;
 
 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  @include list-reset;
+}
+.logo {
+  margin-bottom: 2rem;
 }
 
 li {
+  @include flex-align-center;
   margin: 8px 0;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  transition: background-color 0.3s;
+  padding: 11px 0;
 }
 
 a {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   font-size: 18px;
 }
 
 .blue {
   color: vars.$dim_icons;
   font-size: 1.5rem;
-  margin-right: 10px;
   position: relative; /* Required for the dot */
 }
 
 .profile {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   padding: 10px 0;
   border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
+.blue,
 .profile-left {
   margin-right: 10px;
+}
+
+.blue {
+  border: 1px solid black;
+}
+
+li,
+.profile {
+  transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .profile-image {
@@ -120,21 +124,15 @@ a {
   flex: 1;
 }
 
-.profile-name {
+.profile-name,
+.profile-username {
   font-family: "MyFontHeavy", sans-serif;
   font-size: 1rem;
   margin: 0;
 }
 
-.profile-username {
-  font-family: "MyFontRegular", sans-serif;
-  font-size: 0.875rem;
-  margin: 0;
-}
-
 .profile-right {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
 }
 
 .profile-options {
@@ -152,8 +150,7 @@ a {
 }
 
 .nav-link {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   font-weight: normal; // default
   transition: font-weight 0.2s ease;
 }
@@ -165,6 +162,7 @@ a {
 .icon-wrapper {
   position: relative;
   margin-right: 10px;
+  @include flex-align-center;
 }
 
 .label {

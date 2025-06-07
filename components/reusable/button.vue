@@ -20,29 +20,20 @@ const slots = useSlots();
 
 <style scoped lang="scss">
 @use "@/assets/styles/variables.scss" as vars;
+@use "@/assets/styles/mixins.scss" as *;
 
 .blue-button {
-  background-color: vars.$dim_50;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 9999px;
+  @include btn;
   width: 100%;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
+  background-color: vars.$dim_50;
+  padding: 10px 20px;
   font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .follow-button {
+  @include btn;
   background-color: vars.$dim_50;
-  color: white;
   padding: 5px 10px;
-  border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
   font-size: 15px;
-  transition: background-color 0.3s, color 0.3s;
 }
 </style>

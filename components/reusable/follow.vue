@@ -91,15 +91,14 @@ import showmore from "./showmore.vue";
 
 <style scoped lang="scss">
 @use "@/assets/styles/variables.scss" as vars;
+@use "@/assets/styles/mixins.scss" as *;
 
 .follow-item {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   justify-content: space-between;
 }
 .profile {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   padding: 10px 0;
   border-radius: 10px;
   cursor: pointer;
@@ -121,21 +120,15 @@ import showmore from "./showmore.vue";
   flex: 1;
 }
 
-.profile-name {
+.profile-name,
+.profile-username {
   font-family: "MyFontHeavy", sans-serif;
   font-size: 1rem;
   margin: 0;
 }
 
-.profile-username {
-  font-family: "MyFontRegular", sans-serif;
-  font-size: 0.875rem;
-  margin: 0;
-}
-
 .profile-right {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
 }
 
 .profile-options {

@@ -4,6 +4,9 @@ import search from "../reusable/search.vue";
 import card from "../reusable/card.vue";
 import follow from "../reusable/follow.vue";
 import Footer from "../footer.vue";
+import { useTrending } from "@/composables/useTrending";
+
+const trendingItems = useTrending();
 </script>
 
 <template>
@@ -26,14 +29,9 @@ import Footer from "../footer.vue";
       <template #content>
         Trending in USA
         <ul>
-          <li>1. Spurs vs Arsenal</li>
-          <li>2. NBA Finals</li>
-          <li>3. Tech Innovations</li>
-          <li>4. Climate Change</li>
-          <li>5. Local Elections</li>
-          <li>6. Summer Festivals</li>
-          <li>7. Health and Wellness</li>
-          <li>8. Movie Releases</li>
+          <li v-for="item in trendingItems" :key="item.id">
+            {{ item.title }}
+          </li>
         </ul>
       </template>
     </card>
@@ -45,6 +43,7 @@ import Footer from "../footer.vue";
 
 <style scoped lang="scss">
 @use "@/assets/styles/variables.scss" as vars;
+@use "@/assets/styles/mixins" as *;
 .main {
   display: block;
   padding: 2rem;
@@ -57,9 +56,7 @@ p {
   color: black;
 }
 ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  @include list-reset;
 }
 li {
   margin: 5px 0;
