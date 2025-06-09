@@ -52,8 +52,8 @@ function setActivePage(page) {
           />
         </div>
         <div class="profile-middle">
-          <h3 class="profile-name">JP Junior</h3>
-          <p class="profile-username">@iamjpjunior</p>
+          <h3 class="profile-name">Mike Two</h3>
+          <p class="profile-username">@mikethesecond</p>
         </div>
         <div class="profile-right">
           <Icon name="tabler:dots" class="profile-options" />

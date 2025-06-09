@@ -18,8 +18,8 @@ import showmore from "./showmore.vue";
             />
           </div>
           <div class="profile-middle">
-            <h3 class="profile-name">JP Junior</h3>
-            <p class="profile-username">@iamjpjunior</p>
+            <h3 class="profile-name">Mike Two</h3>
+            <p class="profile-username">@mikethesecond</p>
           </div>
         </div>
         <Button class="button-card">
@@ -36,8 +36,8 @@ import showmore from "./showmore.vue";
             />
           </div>
           <div class="profile-middle">
-            <h3 class="profile-name">JP Junior</h3>
-            <p class="profile-username">@iamjpjunior</p>
+            <h3 class="profile-name">Mike Two</h3>
+            <p class="profile-username">@mikethesecond</p>
           </div>
         </div>
         <Button class="button-card">
@@ -54,8 +54,8 @@ import showmore from "./showmore.vue";
             />
           </div>
           <div class="profile-middle">
-            <h3 class="profile-name">JP Junior</h3>
-            <p class="profile-username">@iamjpjunior</p>
+            <h3 class="profile-name">Mike Two</h3>
+            <p class="profile-username">@mikethesecond</p>
           </div>
         </div>
         <Button class="button-card">
@@ -72,8 +72,8 @@ import showmore from "./showmore.vue";
             />
           </div>
           <div class="profile-middle">
-            <h3 class="profile-name">JP Junior</h3>
-            <p class="profile-username">@iamjpjunior</p>
+            <h3 class="profile-name">Mike Two</h3>
+            <p class="profile-username">@mikethesecond</p>
           </div>
         </div>
         <Button class="button-card">
