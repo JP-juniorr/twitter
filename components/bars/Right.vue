@@ -11,33 +11,35 @@ const trendingItems = useTrending();
 
 <template>
   <div class="main">
-    <search></search>
-    <card class="card">
-      <template #title> Subscribe to Premium </template>
-      <template #content>
-        Subscribe to unlock new features and if eligible, receive a share of
-        revenue.
-      </template>
-      <template #button>
-        <Button>
-          <template #subscribe> Subscribe </template>
-        </Button>
-      </template>
-    </card>
-    <card class="card">
-      <template #title> What’s happening </template>
-      <template #content>
-        Trending in USA
-        <ul>
-          <li v-for="item in trendingItems" :key="item.id">
-            {{ item.title }}
-          </li>
-        </ul>
-      </template>
-    </card>
+    <div class="right_core">
+      <search></search>
+      <card class="card">
+        <template #title> Subscribe to Premium </template>
+        <template #content>
+          Subscribe to unlock new features and if eligible, receive a share of
+          revenue.
+        </template>
+        <template #button>
+          <Button>
+            <template #subscribe> Subscribe </template>
+          </Button>
+        </template>
+      </card>
+      <card class="card">
+        <template #title> What’s happening </template>
+        <template #content>
+          Trending in USA
+          <ul>
+            <li v-for="item in trendingItems" :key="item.id">
+              {{ item.title }}
+            </li>
+          </ul>
+        </template>
+      </card>
 
-    <follow> </follow>
-    <Footer />
+      <follow> </follow>
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -46,7 +48,10 @@ const trendingItems = useTrending();
 @use "@/assets/styles/mixins" as *;
 .main {
   display: block;
-  padding: 2rem;
+  padding: 0.5rem;
+}
+.right_core {
+  margin-bottom: 20px;
 }
 .card {
   margin: 15px 0px;

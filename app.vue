@@ -18,16 +18,15 @@ const isActive = ref(false);
 
 <style lang="scss">
 @use "@/assets/styles/variables.scss" as vars;
+@use "@/assets/styles/mixins.scss" as *;
 .active {
   color: vars.$dim_100;
-  width: 100%;
-  height: 100vh;
+  @include width_height_100;
   background: vars.$dim_100;
 }
 
 .main {
-  display: flex;
-  justify-content: space-between;
+  @include flex-between;
   align-items: flex-start; /* Align items to the top */
   width: 100%;
   height: 100vh;
@@ -35,25 +34,26 @@ const isActive = ref(false);
 
 .left {
   width: 20%;
-  height: 100vh; /* Full viewport height */
   position: sticky; /* Makes the element stick to the top */
   top: 0; /* Stick to the top of the viewport */
-  border-right: 1px solid vars.$dim_border;
   padding: 20px 50px;
   overflow: hidden; /* Prevent scrolling */
 }
 
 .middle {
   width: 50%;
-  height: 100vh;
   overflow-y: auto; /* Enable scrolling for the middle section */
-  border-right: 1px solid vars.$dim_border;
 }
 
 .right {
   width: 30%;
-  height: 100vh;
   overflow-y: auto; /* Enable scrolling for the middle section */
+}
+
+.left,
+.middle,
+.right {
+  height: 100vh; /* Full viewport height */
   border-left: 1px solid vars.$dim_border;
 }
 </style>
