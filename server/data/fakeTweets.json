@@ -1,0 +1,137 @@
+[
+  {
+    "id": 6,
+    "user": {
+      "name": "Nina Patel",
+      "handle": "@ninapatel",
+      "avatar": "https://randomuser.me/api/portraits/women/66.jpg"
+    },
+    "content": "I just made the perfect cup of chai and I'm not sure if I'll ever be the same again ☕🌿 #TeaLover",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "timestamp": "5m",
+    "likes": 102,
+    "retweets": 8,
+    "replies": 2
+  },
+  {
+    "id": 2,
+    "user": {
+      "name": "Jane Doe",
+      "handle": "@janedoe",
+      "avatar": "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    "content": "Nature is beautiful 🌲🍃",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "timestamp": "10m",
+    "likes": 58,
+    "retweets": 12,
+    "replies": 5
+  },
+  {
+    "id": 3,
+    "user": {
+      "name": "Alex Nguyen",
+      "handle": "@alexcodes",
+      "avatar": "https://randomuser.me/api/portraits/men/88.jpg"
+    },
+    "content": "I just completed my first 24-hour hackathon. The fatigue is real, but the joy of building something from scratch is unmatched. Learned so much about APIs, teamwork, and coffee intake limits. ☕🔥 #DevLife #Hackathon",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "timestamp": "1h",
+    "likes": 789,
+    "retweets": 140,
+    "replies": 33
+  },
+  {
+    "id": 4,
+    "user": {
+      "name": "Maya Alvarez",
+      "handle": "@mayasketches",
+      "avatar": "https://randomuser.me/api/portraits/women/29.jpg"
+    },
+    "content": "This morning's sunrise was unreal. The sky turned a soft peach, the lake reflected every hue, and for a moment, time felt like it paused. Days like these make me thankful to slow down. 🌅✨",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "timestamp": "25m",
+    "likes": 580,
+    "retweets": 87,
+    "replies": 19
+  },
+  {
+    "id": 5,
+    "user": {
+      "name": "Marcus Holloway",
+      "handle": "@marcushacks",
+      "avatar": "https://randomuser.me/api/portraits/men/45.jpg"
+    },
+    "content": "Just wrapped up a late-night coding sprint 💻🔥 Who else loves building in the dark?",
+    "image": "https://images.unsplash.com/photo-1581091870622-1f2c69cda312",
+    "timestamp": "20m",
+    "likes": 780,
+    "retweets": 112,
+    "replies": 37
+  },
+  {
+    "id": 6,
+    "user": {
+      "name": "Nina Patel",
+      "handle": "@ninapatel",
+      "avatar": "https://randomuser.me/api/portraits/women/66.jpg"
+    },
+    "content": "I just made the perfect cup of chai and I'm not sure if I'll ever be the same again ☕🌿 #TeaLover",
+    "timestamp": "5m",
+    "likes": 102,
+    "retweets": 8,
+    "replies": 2
+  },
+  {
+    "id": 7,
+    "user": {
+      "name": "Ethan Moore",
+      "handle": "@ethanmoore",
+      "avatar": "https://randomuser.me/api/portraits/men/27.jpg"
+    },
+    "content": "There’s something magical about quiet mornings with good coffee and no notifications.",
+    "timestamp": "18m",
+    "likes": 250,
+    "retweets": 44,
+    "replies": 6
+  },
+  {
+    "id": 8,
+    "user": {
+      "name": "Zara Hussein",
+      "handle": "@zarahussein",
+      "avatar": "https://randomuser.me/api/portraits/women/40.jpg"
+    },
+    "content": "You don’t always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
+    "timestamp": "33m",
+    "likes": 460,
+    "retweets": 60,
+    "replies": 14
+  },
+  {
+    "id": 9,
+    "user": {
+      "name": "Daniel Wright",
+      "handle": "@danwrites",
+      "avatar": "https://randomuser.me/api/portraits/men/9.jpg"
+    },
+    "content": "This platform is evolving quickly. Developers are getting more tools, creators are getting more freedom, and the vibe is shifting. Stay ahead or stay behind. ✨📲",
+    "timestamp": "55m",
+    "likes": 312,
+    "retweets": 59,
+    "replies": 11
+  },
+  {
+    "id": 10,
+    "user": {
+      "name": "Leila Brooks",
+      "handle": "@leilabrooks",
+      "avatar": "https://randomuser.me/api/portraits/women/59.jpg"
+    },
+    "content": "Over the last few months, I’ve been quietly working on myself. Reading more, walking daily, journaling my thoughts. It’s incredible what small habits can do. You don’t need to transform overnight—just start moving. 🌱💫",
+    "timestamp": "1h",
+    "likes": 880,
+    "retweets": 140,
+    "replies": 30
+  }
+]
