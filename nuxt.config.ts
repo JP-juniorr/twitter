@@ -7,6 +7,11 @@ export default defineNuxtConfig({
   components: true,
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    esbuild: {
+      drop: ["console"],
+    },
+  },
   modules: ["@nuxt/icon"],
 });

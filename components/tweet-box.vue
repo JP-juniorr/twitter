@@ -1,6 +1,19 @@
 <script setup>
 import Button from "./reusable/Button.vue";
 import { ref } from "vue";
+
+const tweetContent = ref("");
+const emit = defineEmits(["posted"]);
+console.log("tweetContent from child:", tweetContent.value); // ← This should show
+console.log("emit from child:", emit); // ← This should show in browser
+
+const postTweet = () => {
+  console.log("✅ tweetContent from child:", tweetContent.value); // ← This should show in browser
+
+  if (!tweetContent.value.trim()) return;
+  emit("posted", tweetContent.value);
+  tweetContent.value = "";
+};
 </script>
 
 <template>
@@ -8,6 +21,7 @@ import { ref } from "vue";
     <div class="input-section">
       <img class="avatar" src="../assets/images/human.png" alt="Avatar" />
       <textarea
+        v-model="tweetContent"
         class="tweet-textarea"
         placeholder="What’s happening?"
         rows="2"
@@ -24,7 +38,7 @@ import { ref } from "vue";
         <Icon name="material-symbols:add-location" />
       </div>
       <div class="button-wrap">
-        <Button class="post-button">
+        <Button @click="postTweet" class="post-button">
           <template #follow> Post </template>
         </Button>
       </div>

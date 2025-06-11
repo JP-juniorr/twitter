@@ -1,4 +1,6 @@
 <script setup>
+import { computed, useSlots } from "vue";
+
 const slots = useSlots();
 
 const isPost = computed(() => {
@@ -12,13 +14,12 @@ const isPost = computed(() => {
     <slot name="subscribe" />
   </button>
 
-  <!-- Only render follow-button div if slot "follow" is passed -->
-  <button v-if="slots.tweet" class="blue-button">
+  <button v-else-if="slots.tweet" class="blue-button">
     <slot name="tweet" />
   </button>
 
   <button
-    v-if="slots.follow"
+    v-else-if="slots.follow"
     class="follow-button"
     :style="isPost ? { fontSize: '1rem', padding: '8px 20px' } : {}"
   >
