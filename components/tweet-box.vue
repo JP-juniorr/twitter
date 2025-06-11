@@ -1,3 +1,8 @@
+<script setup>
+import Button from "./reusable/Button.vue";
+import { ref } from "vue";
+</script>
+
 <template>
   <div class="tweet-box">
     <div class="input-section">
