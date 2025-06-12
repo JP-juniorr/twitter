@@ -1,6 +1,4 @@
 <script setup>
-console.log("✅ Component is mounted on client");
-
 import topnavVue from "./../components/topnav.vue";
 import tweetBoxVue from "./../components/tweet-box.vue";
 import { useNuxtApp } from "#app";
@@ -25,14 +23,14 @@ const fetchTweets = async () => {
   loading.value = false;
 };
 
-const postTweet = async (content) => {
-  console.log("✅ tweetContent from child:", content); // ← This should show in browser
+const postTweet = async ({ content, image }) => {
   if (!content.trim()) return;
 
   const { data, error } = await $supabase
     .from("tweets")
     .insert({
       content,
+      image, // 🟢 Already a URL
       user_name: "Joey Ammar",
       user_handle: "@joey",
       user_avatar: "https://randomuser.me/api/portraits/men/75.jpg",
@@ -48,7 +46,7 @@ const postTweet = async (content) => {
   } else {
     tweets.value.unshift(data[0]);
   }
-  console.log("Posting tweet content:", content);
+  console.log("✅ Tweet posted:", content);
 };
 
 onMounted(() => {
@@ -60,7 +58,14 @@ onMounted(() => {
   <div class="main-container">
     <div class="top-nav"><topnavVue /></div>
     <div>
-      <tweetBoxVue @posted="postTweet" />
+      <tweetBoxVue
+        @posted="
+          (data) => {
+            console.log('🔥 TweetBox posted event:', data);
+            postTweet(data);
+          }
+        "
+      />
     </div>
     <div class="tweet-feed">
       <!-- Loader -->
