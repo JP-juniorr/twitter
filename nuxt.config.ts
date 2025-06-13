@@ -13,5 +13,10 @@ export default defineNuxtConfig({
       drop: ["console"],
     },
   },
+  runtimeConfig: {
+    public: {
+      giphyApiKey: "EDzVcUWsw2gxoKyyi1fOiyVmeu2RoNwV",
+    },
+  },
   modules: ["@nuxt/icon"],
 });

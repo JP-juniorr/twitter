@@ -23,14 +23,15 @@ const fetchTweets = async () => {
   loading.value = false;
 };
 
-const postTweet = async ({ content, image }) => {
+const postTweet = async ({ content, image, gif }) => {
   if (!content.trim()) return;
 
   const { data, error } = await $supabase
     .from("tweets")
     .insert({
       content,
-      image, // 🟢 Already a URL
+      image,
+      gif,
       user_name: "Joey Ammar",
       user_handle: "@joey",
       user_avatar: "https://randomuser.me/api/portraits/men/75.jpg",
@@ -42,11 +43,11 @@ const postTweet = async ({ content, image }) => {
     .select("*");
 
   if (error) {
-    console.error("Post failed:", error);
+    console.error("❌ Post failed:", error);
   } else {
+    console.log("✅ Tweet posted:", data[0]);
     tweets.value.unshift(data[0]);
   }
-  console.log("✅ Tweet posted:", content);
 };
 
 onMounted(() => {
@@ -90,6 +91,12 @@ onMounted(() => {
               v-if="tweet.image"
               :src="tweet.image"
               alt="Tweet image"
+              class="tweet-image"
+            />
+            <img
+              v-if="tweet.gif"
+              :src="tweet.gif"
+              alt="Tweet gif"
               class="tweet-image"
             />
             <div class="actions">

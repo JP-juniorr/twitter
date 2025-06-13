@@ -1,23 +1,26 @@
 <script setup>
 import Button from "./reusable/Button.vue";
 import { ref } from "vue";
-const { $supabase } = useNuxtApp(); // ✅ this was missing
-
+const { $supabase } = useNuxtApp();
+import GifPickerModal from "./GifPickerModal.vue";
 const tweetContent = ref("");
 const selectedImage = ref(null);
 const previewUrl = ref(null);
-
+const showGifModal = ref(false);
+const selectedGifUrl = ref(null);
 const emit = defineEmits(["posted"]);
-
+const onGifSelected = (url) => {
+  if (url) selectedGifUrl.value = url;
+  showGifModal.value = false;
+};
 const postTweet = async () => {
   if (!tweetContent.value.trim()) return;
 
   let imageUrl = null;
 
-  // Upload the image if one was selected
   if (selectedImage.value) {
     const filePath = `tweet_${Date.now()}_${selectedImage.value.name}`;
-    const { data, error } = await $supabase.storage
+    const { error } = await $supabase.storage
       .from("tweets")
       .upload(filePath, selectedImage.value);
 
@@ -26,23 +29,22 @@ const postTweet = async () => {
       return;
     }
 
-    // Get the public URL
     const { data: publicData } = await $supabase.storage
       .from("tweets")
       .getPublicUrl(filePath);
     imageUrl = publicData.publicUrl;
   }
 
-  // Emit tweet content and image URL
   emit("posted", {
     content: tweetContent.value,
     image: imageUrl,
+    gif: selectedGifUrl.value,
   });
 
-  // Clear fields
   tweetContent.value = "";
   previewUrl.value = null;
   selectedImage.value = null;
+  selectedGifUrl.value = null;
 };
 
 const handleFileChange = (event) => {
@@ -66,9 +68,20 @@ const handleFileChange = (event) => {
       ></textarea>
     </div>
 
-    <!-- Move preview outside the input-section -->
-    <div v-if="previewUrl" class="preview-container">
-      <img :src="previewUrl" alt="Image preview" class="preview-image" />
+    <!-- Unified preview container for image and gif -->
+    <div v-if="previewUrl || selectedGifUrl" class="preview-container">
+      <img
+        v-if="previewUrl"
+        :src="previewUrl"
+        alt="Image preview"
+        class="preview-image"
+      />
+      <img
+        v-if="selectedGifUrl"
+        :src="selectedGifUrl"
+        alt="GIF preview"
+        class="preview-image"
+      />
     </div>
 
     <div class="footer-section">
@@ -82,12 +95,29 @@ const handleFileChange = (event) => {
             @change="handleFileChange"
           />
         </label>
-        <Icon name="hugeicons:gif-02" />
-        <Icon name="tabler:list" />
-        <Icon name="stash:emoji-wink-plus-duotone" />
-        <Icon name="material-symbols:auto-schedule" />
-        <Icon name="material-symbols:add-location" />
+
+        <div class="icon-button" @click="showGifModal = true">
+          <Icon name="hugeicons:gif-02" />
+        </div>
+        <GifPickerModal v-if="showGifModal" @selected="onGifSelected" />
+
+        <div class="icon-button">
+          <Icon name="tabler:list" />
+        </div>
+
+        <div class="icon-button">
+          <Icon name="stash:emoji-wink-plus-duotone" />
+        </div>
+
+        <div class="icon-button">
+          <Icon name="material-symbols:auto-schedule" />
+        </div>
+
+        <div class="icon-button">
+          <Icon name="material-symbols:add-location" />
+        </div>
       </div>
+
       <div class="button-wrap">
         <Button @click="postTweet" class="post-button">
           <template #follow> Post </template>
@@ -150,6 +180,23 @@ const handleFileChange = (event) => {
   gap: 16px;
   color: #1da1f2;
   font-size: 20px;
+  align-items: center;
+  height: 32px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  label,
+  .icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+  }
 }
 
 .button-wrap {
@@ -207,5 +254,83 @@ const handleFileChange = (event) => {
   object-fit: cover;
   max-height: 300px;
   display: block;
+}
+
+.gif-badge {
+  background-color: #1da1f2;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.upload-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.preview-container {
+  margin-left: 60px;
+  margin-top: -5px;
+}
+
+.preview-image {
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 300px;
+  display: block;
+  margin-top: 10px;
+}
+.modal {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  z-index: 1000;
+  background: white;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 360px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #1da1f2;
+  box-shadow: 0 0 0 2px rgba(29, 161, 242, 0.2);
+}
+
+.gif-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  justify-content: center;
+}
+
+.gif-grid img {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.gif-grid img:hover {
+  transform: scale(1.05);
 }
 </style>
