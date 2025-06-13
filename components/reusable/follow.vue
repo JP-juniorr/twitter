@@ -2,88 +2,56 @@
 import Button from "../reusable/button.vue";
 import card from "../reusable/card.vue";
 import showmore from "./showmore.vue";
+import { ref, computed, onMounted } from "vue";
+
+const users = ref([]);
+const showAll = ref(false);
+
+onMounted(async () => {
+  const data = await import("../../server/data/accounts.json");
+  users.value = data.default;
+});
+
+const visibleUsers = computed(() =>
+  showAll.value ? users.value : users.value.slice(0, 4)
+);
+
+const toggleShow = () => {
+  showAll.value = !showAll.value;
+};
 </script>
 
 <template>
   <card class="card">
-    <template #title> who to follow</template>
+    <template #title> who to follow </template>
     <template #content>
-      <li class="follow-item">
-        <div class="profile">
-          <div class="profile-left">
-            <img
-              src="../../assets/images/human.png"
-              alt="Profile Picture"
-              class="profile-image"
-            />
+      <ul>
+        <li
+          v-for="(user, index) in visibleUsers"
+          :key="index"
+          class="follow-item"
+        >
+          <div class="profile">
+            <div class="profile-left">
+              <img
+                :src="user.avatar"
+                alt="Profile Picture"
+                class="profile-image"
+              />
+            </div>
+            <div class="profile-middle">
+              <h3 class="profile-name">{{ user.name }}</h3>
+              <p class="profile-username">{{ user.username }}</p>
+            </div>
           </div>
-          <div class="profile-middle">
-            <h3 class="profile-name">Mike Two</h3>
-            <p class="profile-username">@mikethesecond</p>
-          </div>
-        </div>
-        <Button class="button-card">
-          <template #follow> Follow</template>
-        </Button>
-      </li>
-      <li class="follow-item">
-        <div class="profile">
-          <div class="profile-left">
-            <img
-              src="../../assets/images/human.png"
-              alt="Profile Picture"
-              class="profile-image"
-            />
-          </div>
-          <div class="profile-middle">
-            <h3 class="profile-name">Mike Two</h3>
-            <p class="profile-username">@mikethesecond</p>
-          </div>
-        </div>
-        <Button class="button-card">
-          <template #follow> Follow</template>
-        </Button>
-      </li>
-      <li class="follow-item">
-        <div class="profile">
-          <div class="profile-left">
-            <img
-              src="../../assets/images/human.png"
-              alt="Profile Picture"
-              class="profile-image"
-            />
-          </div>
-          <div class="profile-middle">
-            <h3 class="profile-name">Mike Two</h3>
-            <p class="profile-username">@mikethesecond</p>
-          </div>
-        </div>
-        <Button class="button-card">
-          <template #follow> Follow</template>
-        </Button>
-      </li>
-      <li class="follow-item">
-        <div class="profile">
-          <div class="profile-left">
-            <img
-              src="../../assets/images/human.png"
-              alt="Profile Picture"
-              class="profile-image"
-            />
-          </div>
-          <div class="profile-middle">
-            <h3 class="profile-name">Mike Two</h3>
-            <p class="profile-username">@mikethesecond</p>
-          </div>
-        </div>
-        <Button class="button-card">
-          <template #follow> Follow</template>
-        </Button>
-      </li>
-      <div class="showmore">
-        <showmore>
-          <template #showmore> Show more </template>
-        </showmore>
+          <Button class="button-card">
+            <template #follow> Follow </template>
+          </Button>
+        </li>
+      </ul>
+
+      <div class="showmore" @click="toggleShow">
+        {{ showAll ? "Show less" : "Show more" }}
       </div>
     </template>
   </card>
@@ -96,17 +64,17 @@ import showmore from "./showmore.vue";
 .follow-item {
   @include flex-align-center;
   justify-content: space-between;
+  padding: 10px 0;
 }
+
 .profile {
   @include flex-align-center;
-  padding: 10px 0;
-  border-radius: 10px;
+  gap: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .profile-left {
-  margin-right: 10px;
+  flex-shrink: 0;
 }
 
 .profile-image {
@@ -122,28 +90,23 @@ import showmore from "./showmore.vue";
 
 .profile-name,
 .profile-username {
-  font-family: "MyFontHeavy", sans-serif;
-  font-size: 1rem;
   margin: 0;
+  font-size: 0.9rem;
 }
 
-.profile-right {
-  @include flex-align-center;
+.profile-name {
+  font-weight: bold;
 }
 
-.profile-options {
-  color: vars.$dim_icons;
-  font-size: 1.25rem;
-  top: 35%;
-  right: 10%;
-  cursor: pointer;
+.profile-username {
+  color: #777;
 }
 
 .showmore {
   color: vars.$dim_icons;
   display: flex;
   justify-content: left;
-  margin-top: 5px;
+  margin-top: 10px;
   cursor: pointer;
   font-weight: bold;
 }

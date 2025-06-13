@@ -16,7 +16,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       giphyApiKey: "EDzVcUWsw2gxoKyyi1fOiyVmeu2RoNwV",
+      gnewsApiKey: "d30660450ddc094a8a340a4508863415",
     },
   },
+
   modules: ["@nuxt/icon"],
 });

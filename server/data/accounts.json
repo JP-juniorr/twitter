@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Mike Two",
+    "username": "@mikethesecond",
+    "avatar": "https://randomuser.me/api/portraits/men/12.jpg"
+  },
+  {
+    "name": "Jane Stone",
+    "username": "@janestone",
+    "avatar": "https://randomuser.me/api/portraits/women/18.jpg"
+  },
+  {
+    "name": "Carlos Vega",
+    "username": "@carlosv",
+    "avatar": "https://randomuser.me/api/portraits/men/30.jpg"
+  },
+  {
+    "name": "Lina Hart",
+    "username": "@linahart",
+    "avatar": "https://randomuser.me/api/portraits/women/24.jpg"
+  },
+  {
+    "name": "Sami Brown",
+    "username": "@samib",
+    "avatar": "https://randomuser.me/api/portraits/men/43.jpg"
+  },
+  {
+    "name": "Ella Novak",
+    "username": "@ellanovak",
+    "avatar": "https://randomuser.me/api/portraits/women/35.jpg"
+  },
+  {
+    "name": "Jamal Carter",
+    "username": "@jamalcarter",
+    "avatar": "https://randomuser.me/api/portraits/men/50.jpg"
+  },
+  {
+    "name": "Maya Lin",
+    "username": "@mayalin",
+    "avatar": "https://randomuser.me/api/portraits/women/52.jpg"
+  }
+]
