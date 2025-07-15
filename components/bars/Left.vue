@@ -46,14 +46,14 @@ function setActivePage(page) {
       <div class="profile">
         <div class="profile-left">
           <img
-            src="../../assets/images/human.png"
+            src="https://randomuser.me/api/portraits/men/75.jpg"
             alt="Profile Picture"
             class="profile-image"
           />
         </div>
         <div class="profile-middle">
-          <h3 class="profile-name">Mike Two</h3>
-          <p class="profile-username">@mikethesecond</p>
+          <h3 class="profile-name">Hussein Ammar</h3>
+          <p class="profile-username">@hussein</p>
         </div>
         <div class="profile-right">
           <Icon name="tabler:dots" class="profile-options" />

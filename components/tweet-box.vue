@@ -59,7 +59,7 @@ const handleFileChange = (event) => {
 <template>
   <div class="tweet-box">
     <div class="input-section">
-      <img class="avatar" src="../assets/images/human.png" alt="Avatar" />
+      <img class="avatar" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Avatar" />
       <textarea
         v-model="tweetContent"
         class="tweet-textarea"

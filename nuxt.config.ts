@@ -20,5 +20,10 @@ export default defineNuxtConfig({
     },
   },
 
+  ssr: false,
+  app: {
+    baseURL: "/", 
+  },
+
   modules: ["@nuxt/icon"],
 });
