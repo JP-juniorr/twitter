@@ -1,5 +1,5 @@
 <script setup>
-import Button from "./reusable/button.vue";
+import Button from "./reusable/Button.vue";
 import { ref } from "vue";
 const { $supabase } = useNuxtApp();
 import GifPickerModal from "./GifPickerModal.vue";

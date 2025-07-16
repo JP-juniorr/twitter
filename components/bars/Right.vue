@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-import Button from "../reusable/button.vue";
-import search from "../reusable/search.vue";
-import card from "../reusable/card.vue";
-import follow from "../reusable/follow.vue";
+import Button from "../reusable/Button.vue";
+import Search from "../reusable/Search.vue";
+import Card from "../reusable/Card.vue";
+import Follow from "../reusable/Follow.vue";
 import Footer from "../footer.vue";
 import { useTrending } from "@/composables/useTrending";
 const trends = ref([]);

@@ -1,7 +1,7 @@
 <script setup>
-import Button from "../reusable/button.vue";
-import card from "../reusable/card.vue";
-import showmore from "./showmore.vue";
+import Button from "./Button.vue";
+import Card from "./Card.vue";
+import Showmore from "./Showmore.vue";
 import { ref, computed, onMounted } from "vue";
 
 const users = ref([]);

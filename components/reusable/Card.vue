@@ -1,5 +1,5 @@
 <script setup>
-import Button from "./button.vue";
+import Button from "./Button.vue";
 const slots = useSlots();
 </script>
 

@@ -1,11 +1,11 @@
 <script setup>
 import { useSidebarLinks } from "@/composables/useSidebarLinks";
 import { useRoute } from "vue-router";
-import Button from "../reusable/button.vue";
+import Button from "../reusable/Button.vue";
 const route = useRoute(); // reactive current route
 const links = useSidebarLinks();
 const activePage = ref(""); // Track the active page
-import follow from "../reusable/Follow.vue";
+import Follow from "../reusable/Follow.vue";
 function setActivePage(page) {
   activePage.value = page;
 }
